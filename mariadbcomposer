@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: unless stopped
+    container_name: MariaDB_Wikis
+    environment:
+      MARIADB_ROOT_PASSWORD: Sametsis*cfg
+    networks:
+      ipv4_address: 172.17.0.4
+    volumes:
+      - /var/snap/docker/common/var-lib-docker/volumes/Mariadb-WIKI/_data:/var/lib/mysql
+      
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
